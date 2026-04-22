@@ -7,7 +7,7 @@ description: Perform web searches using DuckDuckGo when you need to find informa
 
 ## Overview
 
-Use the `ddgr` tool to search DuckDuckGo when you need to find content on the internet.
+Use the `web-search.sh` wrapper (based on `ddgr`) to search DuckDuckGo when you need to find content on the internet.
 
 ## Usage
 
@@ -15,22 +15,24 @@ Use the `ddgr` tool to search DuckDuckGo when you need to find content on the in
 
 ```bash
 # Basic search, 10 results
-ddgr "your search query" --np --json; sleep 30
+web-search.sh "your search query"; sleep 30
 
-# More results (max 25) 
-ddgr "your search query" --np --json -n 20; sleep 30
+# More results (max 25)
+web-search.sh -n 20 "your search query"; sleep 30
 
 # Search on a specific website
-ddgr "your search query" --np --json --site www.example.com; sleep 30
+web-search.sh --site www.example.com "your search query"; sleep 30
 
 # Get help
-ddgr --help
+web-search.sh --help
 ```
 
-**Required flags:**
+**Options:**
 
-- `--np`: (noprompt) Execute search and exit immediately without interactive prompts
-- `--json`: Return structured JSON output
+- `-n, --count NUM`: Number of results to return (default: 10, max: 25)
+- `--site DOMAIN`: Restrict search to a specific domain (e.g. www.example.com)
+
+Mandatory flags (`--np --json`) are always passed automatically.
 
 **Important instruction**
 
