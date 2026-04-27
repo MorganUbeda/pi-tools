@@ -12,19 +12,7 @@ description: Read PDF documents and extract text content using OCR
 ```bash
 # Convert a PDF file to Markdown
 {baseDir}/read-pdf/scripts/read-pdf.sh --input /path/to/file.pdf
-
-# Convert with a specific model
-{baseDir}/read-pdf/scripts/read-pdf.sh --input /path/to/file.pdf --model chandra-ocr-2-8bit-mlx
-
-# Override API URL
-{baseDir}/read-pdf/scripts/read-pdf.sh --input /path/to/file.pdf --api-url http://127.0.0.1:3101/v1
 ```
-
-**Requirements:**
-
-- An API server running (default: `http://127.0.0.1:3101/v1`)
-- A compatible model available (default: `chandra-ocr-2-8bit-mlx`)
-- The input PDF file must exist and be readable
 
 ## Output Format
 
@@ -44,7 +32,4 @@ Returns Markdown-formatted text extracted from the PDF, including:
 
 ## Notes
 
-- The default model `chandra-ocr-2-8bit-mlx` is an MLX-based OCR model
-- Set `PDF_READ_API_URL` or `PDF_READ_MODEL` environment variables to override defaults
-- If the API server is not running, the tool will fail with a connection error
-- For best OCR quality, ensure the PDF has sufficient resolution
+- This skill takes a long time to run (around 120s per page) so set a high timeout
