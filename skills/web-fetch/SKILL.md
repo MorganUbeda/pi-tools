@@ -1,6 +1,6 @@
 ---
 name: web-fetch
-description: Fetch and retrieve content from webpages when you need to access specific URLs directly. Use this skill for reading documentation, articles, tutorials, API references, or any webpage content that requires direct URL access.
+description: Fetch and retrieve content from webpages when you need to access specific URLs directly. Use this skill for reading documentation, articles, tutorials, API references, or any webpage content that requires direct URL access. Use it for webpages, not for downloading binary files.
 ---
 
 # Web fetch
@@ -41,6 +41,11 @@ Returns cleaned, Markdown-formatted content from the webpage including:
 - Reading web-based resources when URL is known
 - Getting structured content from webpages
 
+## When NOT to Use
+
+- The resource is not an html webpage but a binary file like a pdf or a zip file (use curl)
+- The exact URL is not known (use the web-search skill)
+
 ## Notes
 
 - The script automatically cleans and formats content as Markdown
@@ -48,3 +53,4 @@ Returns cleaned, Markdown-formatted content from the webpage including:
 - Do NOT try to debug the tool
 - If the tool fails repeatedly, you can fall back to a simple curl command
 - Consider using the web-search skill when you need to discover URLs first
+- For PDF documents, use curl to download and the read-pdf skill to read
