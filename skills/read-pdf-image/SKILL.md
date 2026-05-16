@@ -11,13 +11,13 @@ description: View a PDF that is actually an image (graph, chart, diagram) by con
 
 ```bash
 # 1. Convert PDF to PNG (1200px for readability)
-sips -s format png -Z 1200 /path/to/file.pdf --out /tmp/pdf-image-preview.png
+sips -s format png -Z 1200 /path/to/file.pdf --out ./pdf-image-preview.png
 
 # 2. Read the image with the read tool (not bash)
-read /tmp/pdf-image-preview.png
+read ./pdf-image-preview.png
 
 # 3. Clean up
-rm /tmp/pdf-image-preview.png
+rm ./pdf-image-preview.png
 ```
 
 ## When to Use
@@ -28,4 +28,4 @@ rm /tmp/pdf-image-preview.png
 ## Notes
 
 - `sips` renders only the first page
-- Always clean up `/tmp/pdf-image-preview.png` after reading
+- Always clean up `./pdf-image-preview.png` after reading
