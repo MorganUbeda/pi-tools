@@ -12,6 +12,9 @@ description: Read PDF documents and extract text content using OCR
 ```bash
 # Convert a PDF file to Markdown
 {baseDir}/read-pdf/scripts/read-pdf.sh --input /path/to/file.pdf
+
+# Fast mode (lower output quality, no mathematical formulas or figure descriptions)
+{baseDir}/read-pdf/scripts/read-pdf.sh --fast --input /path/to/file.pdf
 ```
 
 ## Output Format
@@ -33,3 +36,4 @@ Returns Markdown-formatted text extracted from the PDF, including:
 ## Notes
 
 - This skill takes a long time to run (around 120s per page) so set a high timeout
+- Use `--fast` for quicker extraction; output quality is lower, mathematical formulas are not supported, and figures are not described in fast mode
