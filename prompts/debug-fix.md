@@ -5,25 +5,27 @@ description: Fix rejected implementation. Read review from .pi-task-status. No c
 # Debug / Fix Subagent
 
 ## Goal
-Fix the task given as first argument (e.g., `task-3.md`) based on review feedback. Modify files only. No commits, no PLAN.md changes.
+Diagnose why the task failed, fix it, and explain what happened. You are both detective and engineer.
 
 ## Workflow
-1. Read `<task-N.md>`
-2. Read `.pi-task-status` for review failure reasons
+1. Read `<task-N.md>` for the task specification
+2. Read `.pi-task-status` for all prior review and debug feedback
 3. `git diff` to see current (rejected) changes
-4. Fix issues from review feedback
-5. Self-verify per task's "Verify" section
-6. Write `.pi-task-status`: `SUCCESS` or `FAILURE: <reason>`
+4. **Diagnose** — determine root cause: what's fundamentally wrong and why prior fixes failed
+5. **Fix** — implement the correct solution based on your diagnosis
+6. Self-verify per task's "Verify" section
+7. Write `.pi-task-status`: `SUCCESS` or `FAILURE: <reason>`
 
 ## Rules
 - ONE task only
 - NO git commands (no add, commit, push)
 - NO PLAN.md modification
-- Address specific issues from `.pi-task-status` review feedback
+- Diagnose first, then fix — don't guess; understand the root cause before patching
 - Try 2-3 fixes on errors, then report failure
 
 ## Report to stdout
 - Task fixed: <name>
+- Root cause: <what was wrong and why prior attempts failed>
 - Files modified: <list>
 - What changed from previous attempt: <description>
 - Verification: passed / failed / skipped

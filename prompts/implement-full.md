@@ -5,7 +5,7 @@ description: Orchestrate full plan implementation via sequential subagent spawns
 # Full Implementation Orchestrator
 
 ## Goal
-Run all unchecked tasks from PLAN.md through subagents. Never implement or debug directly — delegate everything.
+Run all unchecked tasks from PLAN.md through subagents. Delegate everything — never implement, debug, or diagnose directly.
 
 ## Workflow
 1. **Setup** — If on main, create an informative branch (e.g., `feature-auth`). Write name to `.pi-branch`.
@@ -20,10 +20,14 @@ Run all unchecked tasks from PLAN.md through subagents. Never implement or debug
 4. **Done** — STOP with summary of changes and commits.
 
 ## Rules
-- **Pure orchestrator** — never implement, edit code, or debug directly
+- **Pure orchestrator only** — you are a workflow manager, not a coder. Delegate ALL work.
+- **NEVER** implement code yourself — always use `/implement-sub`
+- **NEVER** debug or diagnose code yourself — always use `/debug-fix` (it diagnoses and fixes)
+- **NEVER** run diagnostic commands, read diffs to fix issues, or attempt fixes inline
 - Sequential only, one subagent at a time
 - All commits are done by this prompt (worktree + PLAN.md)
 - Never work on main
+- If a subagent reports FAILURE, STOP and report — do not try to fix it yourself
 
 ## Report
 - Branch name, tasks completed/failed, files changed, commits made
