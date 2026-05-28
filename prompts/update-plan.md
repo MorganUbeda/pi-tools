@@ -10,7 +10,7 @@ Update an existing PLAN.md through conversation with the user. Do NOT write any 
 $@
 
 ## Workflow
-1. **Read current plan** - PLAN.md and all task-N.md files
+1. **Read current plan** - `PLAN.md` and all task files it references
 2. **Understand changes** - What new requirements or discoveries affect the plan
 3. **Iterate with user** - Discuss what needs to be updated, added, or removed
 4. **Refine** - Ask questions on unclear requirements or conflicts

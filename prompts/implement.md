@@ -8,20 +8,22 @@ description: Implement one task from plan, verify, and mark complete
 Implement the first unchecked task from PLAN.md, verify, mark complete, then STOP.
 
 ## Workflow
-1. **Read** - Find first unchecked task `[ ]` in PLAN.md; read its task-N.md file
-2. **Implement** - Modify only files required by this task
-3. **Verify** - Confirm implementation works per specification
-4. **Mark done** - Update PLAN.md: change `[ ]` to `[x]`
-5. **Update CONTEXT.md** - Document important decisions/constraints (skip if nothing notable)
-6. **STOP** - Report and wait for user
+1. If `PLAN.md` is missing, STOP and report
+2. Find the first unchecked task in `PLAN.md`; if none remain, STOP and report
+3. Read the referenced task file
+4. Implement only that task
+5. Verify per the task spec
+6. Mark the task done in `PLAN.md` (`[ ]` → `[x]`)
+7. Update `CONTEXT.md` only if needed
+8. Report and STOP
 
 ## Rules
-- **One task per session only**; don't proceed to subsequent tasks
-- Only read your task-N.md, not all task files
-- Only modify files the task requires
+- One task only
+- Read only the selected task file
+- Modify only files this task requires
 - Obvious cases: assume and document; unclear: ask user
-- Try 2-3 fixes on errors, then STOP and report
-- **Never continue after failure; never jump to next task**
+- Try 2-3 fixes on errors, then STOP
+- Never continue to the next task
 
 ## Report
 - Task completed: [name]

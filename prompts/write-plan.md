@@ -5,66 +5,59 @@ description: Write agreed-upon plan to files
 # Write Plan Session
 
 ## Goal
+Write the agreed plan to `$1`.
 
-Write the agreed-upon plan to PLAN.md in $@
+## Workflow
+1. If `$1` is missing, STOP and ask for the target directory
+2. Write `$1/PLAN.md`
+3. Write every task file listed in `PLAN.md` under `$1/`
+4. STOP
 
 ## Output Format
 
-**PLAN.md** (at directory root):
+**`$1/PLAN.md`**
 
 ```markdown
 # [Descriptive Title]
 
-[One sentence: what this plan achieves]
+[One sentence summary]
 
 ## TODO
 
-- [ ] task-1.md
-- [ ] task-2.md
-- [ ] task-3.md
+- [ ] task-a.md
+- [ ] task-b.md
 
 ## General Context
 
-[Links, data sources, project notes relevant to all tasks]
+[Notes relevant to all tasks]
 ```
 
-**task-N.md** (individual task files):
+**Each task file listed in `PLAN.md`**
 
 ```markdown
 # Task: [Task Name]
 
 ## What
-[Clear description of the work]
+[Work to do]
 
 ## How
-[Key implementation details or approaches]
+[Implementation approach]
 
 ## Verify
-[How to confirm completion, e.g., "compiles", "test passes"]
-
-## Artifacts
-[Expected files/outputs produced]
-
-## Risk
-[Low/Medium/High] - flag particularly risky or complex tasks
+[How to confirm completion]
 
 ## Context
-[Any specific context for this task]
+[Task-specific context]
+
+## Dependencies
+[Other task files, or "None"]
 ```
 
 ## Rules
+- Write `$1/PLAN.md` and every task file listed in it
+- Use the filenames listed in `PLAN.md`
+- Include only agreed tasks, context, and verification criteria
+- Order tasks so dependencies come first
+- Do not add new tasks, make design decisions, or implement repository changes
 
-**MUST:**
-
-- Write the PLAN.md file in $@
-- Include all tasks discussed during planning
-- Include all context and verification criteria agreed upon
-- Order tasks so dependencies precede dependents
-
-**NEVER:**
-
-- Add new tasks not discussed with the user
-- Make design decisions during this step
-- Start implementing changes to the repository
-
-**STOP** after writing PLAN.md and wait for user instruction.
+**STOP** after writing all plan files and wait for user instruction.
