@@ -54,6 +54,35 @@ let
       platforms = platforms.unix;
     };
   };
+
+  # pi-questions: structured ask_questions tool extension
+  pi-questions = stdenvNoCC.mkDerivation rec {
+    pname = "pi-questions";
+    version = "0.3.4";
+
+    src = fetchFromGitHub {
+      owner = "drsh4dow";
+      repo = "pi-questions";
+      rev = "main";
+      hash = "sha256-9IlYbtMxU3QJtFh6pAqQrE+fk74WIp9ItycJkJ18aQo=";
+    };
+
+    dontBuild = true;
+
+    installPhase = ''
+      runHook preInstall
+      mkdir -p "$out"
+      cp -r "$src/extensions/ask-questions.ts" "$out/"
+      runHook postInstall
+    '';
+
+    meta = with lib; {
+      description = "Structured ask_questions tool for Pi planning and clarification flows";
+      homepage = "https://github.com/drsh4dow/pi-questions";
+      license = licenses.unlicense;
+      platforms = platforms.unix;
+    };
+  };
 in
 
 stdenvNoCC.mkDerivation {
@@ -72,10 +101,14 @@ stdenvNoCC.mkDerivation {
     mkdir -p "$out/extensions"
     cp -r ${sandbox} "$out/extensions/sandbox"
 
-    # Copy extensions from repo root
+    # Copy extensions from repo root (e.g. sandbox.json config)
     if [ -d extensions ]; then
       cp -r extensions/* "$out/extensions/" 2>/dev/null || true
     fi
+
+    # Copy pi-questions extension
+    mkdir -p "$out/extensions"
+    cp -r ${pi-questions}/* "$out/extensions/"
 
     # Copy skills
     if [ -d skills ]; then
