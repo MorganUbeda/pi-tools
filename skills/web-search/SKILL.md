@@ -15,16 +15,16 @@ Use the `web-search.sh` wrapper (based on `ddgr`) to search DuckDuckGo when you 
 
 ```bash
 # Basic search, 10 results
-web-search.sh "your search query"; sleep 30
+{baseDir}/web-search/scripts/web-search.sh "your search query"; sleep 30
 
 # More results (max 25)
-web-search.sh -n 20 "your search query"; sleep 30
+{baseDir}/web-search/scripts/web-search.sh -n 20 "your search query"; sleep 30
 
 # Search on a specific website
-web-search.sh --site www.example.com "your search query"; sleep 30
+{baseDir}/web-search/scripts/web-search.sh --site www.example.com "your search query"; sleep 30
 
 # Get help
-web-search.sh --help
+{baseDir}/web-search/scripts/web-search.sh --help
 ```
 
 **Options:**
