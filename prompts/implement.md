@@ -1,21 +1,21 @@
 ---
 description: Implement one task from plan, verify, and mark complete
+argument-hint: "<PLAN-FILE>"
 ---
 
 # Implementation Session
 
 ## Goal
-Implement the first unchecked task from PLAN.md, verify, mark complete, then STOP.
+Implement the first unchecked task from `$1` verify, mark complete, then STOP.
 
 ## Workflow
-1. If `PLAN.md` is missing, STOP and report
-2. Find the first unchecked task in `PLAN.md`; if none remain, STOP and report
+1. If `$1` is missing, STOP and report
+2. Find the first unchecked task in `$1`; if none remain, STOP and report
 3. Read the referenced task file
 4. Implement only that task
 5. Verify per the task spec
-6. Mark the task done in `PLAN.md` (`[ ]` → `[x]`)
-7. Update `CONTEXT.md` only if needed
-8. Report and STOP
+6. Mark the task done in `$1` (`[ ]` → `[x]`)
+7. Report and STOP
 
 ## Rules
 - One task only
@@ -30,6 +30,6 @@ Implement the first unchecked task from PLAN.md, verify, mark complete, then STO
 - Files modified
 - Verification results
 - Issues/resolutions
-- PLAN.md/CONTEXT.md updated
+- $1 updated
 
 **STOP** and await user instructions.

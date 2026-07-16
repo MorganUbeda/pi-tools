@@ -1,5 +1,6 @@
 ---
 description: Design session through conversation
+argument-hint: "[Description]"
 ---
 
 # Design Session
