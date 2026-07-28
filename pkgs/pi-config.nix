@@ -56,14 +56,14 @@ let
     };
   };
 
-  # pi-rich-renderer: render LaTeX formulas as terminal images
-  pi-rich-renderer = stdenvNoCC.mkDerivation rec {
-    pname = "pi-rich-renderer";
-    version = "0.1.0";
+  # pi-math: render LaTeX as terminal images in Pi's TUI
+  pi-math = stdenvNoCC.mkDerivation rec {
+    pname = "pi-math";
+    version = "0.2.0";
 
     src = fetchurl {
-      url = "https://registry.npmjs.org/pi-rich-renderer/-/pi-rich-renderer-${version}.tgz";
-      hash = "sha512-rpaSKauexxHA2FOBJuCc5EBl+YseLwsgrcLJUoD+tQQwiHUGaGL8l5ZtJ1Ff+KNaNU9/rM+UT4WaYWeiz2IBdQ==";
+      url = "https://registry.npmjs.org/@fadouse/pi-math/-/pi-math-${version}.tgz";
+      hash = "sha512-CnH3DS3YDhzd8U54i/aXRrFkZWplqeWkQS6gMXmR9neBRJ8mnSC2MNh0VF3KMpRpvQvYmWjBvwzbOz0TuOycTw==";
     };
 
     dontBuild = true;
@@ -76,8 +76,8 @@ let
     '';
 
     meta = with lib; {
-      description = "Pi extension that renders LaTeX formulas as terminal images";
-      homepage = "https://github.com/dbydd/pi-rich-renderer";
+      description = "Render LaTeX as terminal images in Pi's TUI";
+      homepage = "https://github.com/Fadouse/pi-math";
       license = licenses.mit;
       platforms = platforms.unix;
     };
@@ -134,8 +134,8 @@ stdenvNoCC.mkDerivation {
       cp -r extensions/* "$out/extensions/" 2>/dev/null || true
     fi
 
-    # Copy pi-rich-renderer npm package
-    cp -r ${pi-rich-renderer} "$out/extensions/pi-rich-renderer"
+    # Copy pi-math npm package
+    cp -r ${pi-math} "$out/extensions/pi-math"
 
     # Copy pi-questions extension
     cp -r ${pi-questions}/* "$out/extensions/"
