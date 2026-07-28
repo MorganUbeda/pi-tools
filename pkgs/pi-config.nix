@@ -2,6 +2,7 @@
 , stdenvNoCC
 , buildNpmPackage
 , fetchFromGitHub
+, fetchurl
 }:
 
 let
@@ -50,6 +51,33 @@ let
     meta = with lib; {
       description = "Sandbox extension for pi";
       homepage = "https://github.com/sysid/pi-extensions";
+      license = licenses.mit;
+      platforms = platforms.unix;
+    };
+  };
+
+  # pi-rich-renderer: render LaTeX formulas as terminal images
+  pi-rich-renderer = stdenvNoCC.mkDerivation rec {
+    pname = "pi-rich-renderer";
+    version = "0.1.0";
+
+    src = fetchurl {
+      url = "https://registry.npmjs.org/pi-rich-renderer/-/pi-rich-renderer-${version}.tgz";
+      hash = "sha512-rpaSKauexxHA2FOBJuCc5EBl+YseLwsgrcLJUoD+tQQwiHUGaGL8l5ZtJ1Ff+KNaNU9/rM+UT4WaYWeiz2IBdQ==";
+    };
+
+    dontBuild = true;
+
+    installPhase = ''
+      runHook preInstall
+      mkdir -p "$out"
+      cp -r ./* "$out/"
+      runHook postInstall
+    '';
+
+    meta = with lib; {
+      description = "Pi extension that renders LaTeX formulas as terminal images";
+      homepage = "https://github.com/dbydd/pi-rich-renderer";
       license = licenses.mit;
       platforms = platforms.unix;
     };
@@ -106,8 +134,10 @@ stdenvNoCC.mkDerivation {
       cp -r extensions/* "$out/extensions/" 2>/dev/null || true
     fi
 
+    # Copy pi-rich-renderer npm package
+    cp -r ${pi-rich-renderer} "$out/extensions/pi-rich-renderer"
+
     # Copy pi-questions extension
-    mkdir -p "$out/extensions"
     cp -r ${pi-questions}/* "$out/extensions/"
 
     # Copy skills
